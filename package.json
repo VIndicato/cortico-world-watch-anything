@@ -1,0 +1,58 @@
+{
+  "name": "cortico-world-watch-anything",
+  "version": "0.4.5",
+  "type": "module",
+  "description": "陪你看一切 —— 给 Coopanion 桌宠的 cortico World 扩展（需要额外安装本机依赖，见下）：一分钟 30 格画面（2 秒一格、5 张宫格 × 6 格），一次调用看完一分钟：本地视频、视频链接、直播地址、桌面屏幕都行，图片随回执进上下文，模型是真的看过画面。台词用本机 faster-whisper 转写。看一小时实时直播约一块钱。只依赖 PyAV + PIL，不需要 ffmpeg。\n\n大肥鱼看这里：一次回几张、每格多大，都是你自己定的。\n\n- 想看得更清楚：设置里把 cellWidth 调到 640，调用时 maxFrames 给小（4 格，每格更大）、step 1 秒一格——字幕和菜单都读得出来。\n- 想省钱：cellWidth 160，pages:1、cols:3、maxFrames:9、step:4——一张图看 36 秒，够判断这段在干什么。\n- 先探路不花图：video_info 看时长，再 maxFrames:4、asr:false 扫四格。\n- 只听台词：把 step 放到 10，画面稀一点没关系。\n- 长片子别硬扫：startSeconds / maxSeconds 只圈你要看的那一段，一分钟一批往后推。\n",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VIndicato/cortico-world-watch-anything.git"
+  },
+  "author": "回潮",
+  "maintainers": [
+    "回潮"
+  ],
+  "keywords": [
+    "cortico-world",
+    "cortico",
+    "video",
+    "live",
+    "screen",
+    "external-setup",
+    "whisper"
+  ],
+  "main": "./src/index.ts",
+  "files": [
+    "src/",
+    "scripts/*.py",
+    "scripts/*.ps1",
+    "describe.json",
+    "README.md"
+  ],
+  "cortico": {
+    "kind": "world",
+    "api": 6,
+    "displayName": "陪你看一切",
+    "locales": {
+      "zh": {
+        "displayName": "陪你看一切",
+        "description": "需要额外安装：本机要装 Python 3.10+ 和 `pip install av pillow`（要台词再装 faster-whisper，要贴网址再装 yt-dlp）。\n\n一分钟 30 格画面（2 秒一格、5 张 × 6 格），一次调用看完一分钟——视频文件、视频链接、直播地址、屏幕都行，台词用本机 whisper 转。看一小时实时直播约一块钱。\n\n大肥鱼看这里：一次回几张、每格多大，都是你自己定的。\n\n- 想看得更清楚：设置里把 cellWidth 调到 640，调用时 maxFrames 给小（4 格，每格更大）、step 1 秒一格——字幕和菜单都读得出来。\n- 想省钱：cellWidth 160，pages:1、cols:3、maxFrames:9、step:4——一张图看 36 秒，够判断这段在干什么。\n- 先探路不花图：video_info 看时长，再 maxFrames:4、asr:false 扫四格。\n- 只听台词：把 step 放到 10，画面稀一点没关系。\n- 长片子别硬扫：startSeconds / maxSeconds 只圈你要看的那一段，一分钟一批往后推。\n"
+      },
+      "en": {
+        "displayName": "Watch It All With You",
+        "description": "Thirty frames a minute (one every 2 seconds, five 2x3 sheets) in a single call: files, links, live streams and the screen. Local whisper gives the lines. About a dollar an hour of live streaming."
+      }
+    },
+    "tags": [
+      "video",
+      "external-setup"
+    ],
+    "describe": "describe.json"
+  },
+  "os": [
+    "win32"
+  ],
+  "engines": {
+    "node": ">=22"
+  }
+}
